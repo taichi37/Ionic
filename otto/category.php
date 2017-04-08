@@ -7,7 +7,7 @@
     $db = 'ionic2';
     $charset = 'utf8';
     $user = 'jesse';
-    $pass = 'y60m8d6';
+    $pass = '******';
     $opt = NULL;
 
     $conf = 'mysql:host=' . $host . ';port=' . $port . ';dbname=' . $db . ';charset=' . $charset;
