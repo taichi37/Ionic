@@ -1,0 +1,62 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>{{pageTitle}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+
+  <ion-card *ngFor="let item of product">
+
+    <ion-card-header>
+      <ion-item>
+        <h2>{{item.name}}</h2>
+        <button ion-button color="primary" item-right (click)="updateEntry({test: item})">Edit</button>
+        <button ion-button color="primary" item-right (click)="deleteEntry({id: item.id})">Delete</button>
+      </ion-item>
+    </ion-card-header>
+
+    <ion-card-content>
+      {{item.description}}
+    </ion-card-content>
+
+  </ion-card>
+
+  <div *ngIf="isCreate">
+
+    <ion-item>
+      <ion-label>Category</ion-label>
+      <ion-select interface="action-sheet" [(ngModel)]="myCategory">
+        <ion-option *ngFor="let item of items">{{item.tag}}</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <form [formGroup]="form">
+      <ion-list>
+
+        <ion-item-group>
+          <ion-item-divider color="light">Technology Name *</ion-item-divider>
+          <ion-item>
+              <ion-input type="text" placeholder="Enter a name..." formControlName="formName" [(ngModel)]="myName"></ion-input>
+          </ion-item>
+        </ion-item-group>
+
+        <ion-item-group>
+          <ion-item-divider color="light">Technology Description *</ion-item-divider>
+          <ion-item>
+              <ion-textarea placeholder="Description..." rows="6" formControlName="formDescription" [(ngModel)]="myDescription"></ion-textarea>
+          </ion-item>
+        </ion-item-group>
+
+        <ion-item>
+          <button ion-button type="submit" color="primary" text-center block [disabled]="!form.valid" (click)="createEntry()">Save Entry</button>
+        </ion-item>
+
+      </ion-list>
+    </form>
+  </div>
+
+</ion-content>
