@@ -1,1 +1,1 @@
-# ionic2
+# ionic
